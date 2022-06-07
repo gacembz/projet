@@ -7,7 +7,7 @@ body("passWord","password must be at least 6 caracters").isLength({min:6}),
 ];
 exports.loginValidation=[
     body("email","please add a valid email").isEmail(),
-body("passWord","password must be at least 6 caracters").isLength({min:6}),
+    body("passWord","password must be at least 6 caracters").isLength({min:6}),
 
 ];
 exports.validation=(req,res,next)=>{

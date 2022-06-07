@@ -1,23 +1,20 @@
-import React from 'react'
-import {useState}from "react";
+import React, { useState } from 'react'
+
 import{useDispatch}from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { login } from './redux/actions/authActions';
+
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
+   const [email, setEmail] = useState("");
+  const [passWord, setpassWord] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleAdd = (e) => {
     e.preventDefault();
-    dispatch(Login({ email,Password }, navigate));
-  };
-  //   const [email,setEmail]=useState("");
-  // const[passWord,setPassWord]=useState("");
-  // const navigate=useNavigate()
-  // const dispatch=useDispatch()
-  // const handleLogin=(e)=>{
-  //   e.preventDefault();
+    dispatch(login({ email,passWord }, navigate));
+    
+  }
   return (
     <div><div id="main-wrapper" className="container">
       <div className="row justify-content-center">
@@ -35,7 +32,7 @@ const Login = () => {
                       Enter your email address and password to access admin
                       panel.
                     </p>
-                    <form onSubmit={handleAdd}
+                    <form 
                      
                     >
                       <div className="form-group">
@@ -52,15 +49,15 @@ const Login = () => {
                       </div>
                       <div className="form-group mb-5">
                         <label htmlFor="exampleInputPassword1">Password</label>
-                        <input  onChange={(e)=>setPassword(e.target.value)}
-                        value={Password}
+                        <input  onChange={(e)=>setpassWord(e.target.value)}
+                        value={passWord}
                           type="password"
                           className="form-control"
                           id="exampleInputPassword1"
                          
                         />
                       </div>
-                      <button  className="btn btn-theme">
+                      <button onClick={handleAdd} className="btn btn-theme">
                         Login
                       </button>
                       <a
@@ -105,6 +102,8 @@ const Login = () => {
 }
 
 export default Login
+  
+
 
 
 

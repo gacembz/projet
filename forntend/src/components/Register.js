@@ -1,20 +1,19 @@
-
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-
-
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { register } from './redux/actions/authActions';
 
 const Register = () => {
-   const [email, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [passWord, setpassWord] = useState("");
   const [firstName, setFirstName] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleAdd = (e) => {
     e.preventDefault();
-    dispatch(Register({ email,Password,firstName }, navigate));}
+    dispatch(register({ firstName, email, passWord }, navigate));
+    
+  }
   
   return (
     <div><div id="main-wrapper" className="container">
@@ -33,7 +32,7 @@ const Register = () => {
                       Enter your email address and password to access admin
                       panel.
                     </p>
-                    <form onSubmit={handleAdd}
+                    <form 
                      
                     >
                      <div className="form-group">
@@ -62,15 +61,15 @@ const Register = () => {
                       </div>
                       <div className="form-group mb-5">
                         <label htmlFor="exampleInputPassword1">Password</label>
-                        <input onChange={(e)=>setPassword(e.target.value)}
-                        value={Password}
+                        <input onChange={(e)=>setpassWord(e.target.value)}
+                        value={passWord}
                           type="PassWord"
                           className="form-control"
                           id="example Input Password1"
                          
                         />
                       </div>
-                      <button className="btn btn-theme" >
+                      <button onClick={handleAdd} className="btn btn-theme" >
                         register
                       </button>
                       <a
