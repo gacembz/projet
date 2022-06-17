@@ -61,7 +61,7 @@ exports.GetUser = async (req, res) => {
 
     }
 }
-exports.GetAllUser = async(req,res)=>{
+exports.getAllUser = async(req,res)=>{
     try {
      const allusers = await users.find()  
      res.status(200).send({msg:"ggg",allusers}) 

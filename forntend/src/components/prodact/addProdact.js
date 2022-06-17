@@ -1,7 +1,7 @@
 import React, {  useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import {useDispatch } from "react-redux";
-import { Addprodact, addProdact } from "../redux/actions/prodactActions";
+import {  addProdact } from "../redux/actions/prodactActions";
 import { useNavigate } from "react-router-dom";
 
 
@@ -53,7 +53,7 @@ const AddProdact = () => {
         <Button
           variant="primary"
           onClick={() => {
-            dispatch(Addprodact({ Name,prix,reference,image }));
+            dispatch(addProdact({ Name,prix,reference,image }));
             navigate("/prodact");
           }}
           type="submit"
@@ -65,4 +65,4 @@ const AddProdact = () => {
 }
 
 
-export default AddProdact;
+export default addProdact;

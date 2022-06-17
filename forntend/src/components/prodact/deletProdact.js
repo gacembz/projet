@@ -1,5 +1,6 @@
 
 import React from 'react'
+import { deleteProdact } from '../redux/actions/prodactActions';
 
 const DeletProdact = () => {
   return (
@@ -7,4 +8,4 @@ const DeletProdact = () => {
   )
 }
 
-export default DeletProdact;
+export default deleteProdact;

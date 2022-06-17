@@ -1,11 +1,11 @@
 const express=require("express");
-const { register, GetProdact, deleteProdact, updateProdact } = require("../controllers/prodactControlle");
+const { register, deleteProdact, updateProdact, getProdacts } = require("../controllers/prodactControlle");
 
 const prodactRoutes = express.Router()
 
-prodactRoutes.post("/register",register);
+prodactRoutes.post("/addProdact",register);
 
-prodactRoutes.get("/get",GetProdact);
+prodactRoutes.get("/allproducts",getProdacts);
 prodactRoutes.delete("/delete/:id",deleteProdact);
 prodactRoutes.put("/put/:id",updateProdact);
 

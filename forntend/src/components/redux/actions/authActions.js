@@ -1,47 +1,63 @@
 import axios from "axios"
 
-import { FAIL, LOGIN, REGISTER } from "../types/authTypes";
-
-
-// export const register=(data,navigate)=>async(dispatch)=>{
-//     try{
-//     const res= await axios.post("/user/register",data);
-//     console.log(res.data)
-//     dispatch({type:REGISTER,payload:res.data});//msg user token from back
-//     navigate('/login')
-//     }
-//     catch(error){
-//         dispatch({type:FAIL,payload:error.response.data});
-
-//     }
-// }
+import { FAIL, GETCURRENT, GETUSER, LOGIN, LOGOUT, REGISTER } from "../types/authTypes";
 export const register =(data,navigate)=> async(dispatch)=>{
     try {
         const res = await axios.post("/user/register",data);
         dispatch({type:REGISTER,payload:res.data})
-        navigate("/")
+        navigate("/User/UserProfile")
     } catch (error) {
         console.log(error)
     }
 }
-// export const login=(data,navigate)=>async(dispatch)=>{
-//     try{
-//     const res= await axios.post("/api/user/login",data);
-//     console.log(res.data)
-//     dispatch({type:LOGIN,payload:res.data});//msg user token from back
-//     navigate('/')
-//     }
-//     catch(error){
-//         dispatch({type:FAIL,payload:error.response.data});
-
-//     }
-// };
 export const login =(data,navigate)=>async(dispatch)=>{
     try {
         const res = await axios.post("/user/login",data)
         dispatch({type:LOGIN,payload:res.data})
-        navigate("/")
+        navigate("/UserProfile")
     } catch (error) {
         console.log(error)
     }
 }
+export const getcurrent = () => async (dispatch) => {
+  const config = {
+    headers: {
+      token: localStorage.getItem("token"),
+    },
+  };
+  try {
+    const res = await axios.get("/user/current", config);
+    dispatch({ type: GETCURRENT, payload: res.data });
+  } catch (error) {
+    dispatch({ type: FAIL, payload: error.response.data });
+  }
+
+};
+export const GetUser = () => async (dispatch) => {
+  try {
+    const res = await axios.get("/api/user/getuser");
+    dispatch({ type:GETUSER , payload: res.data });
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const AddUser = (newUsers) => async (dispatch) => {
+  try {
+    const res = await axios.post("/api/user/", newUsers);
+    dispatch(GetUser());
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const deletUser = (id) => async (dispatch) => {
+  try {
+    const res = await axios.delete(`/api/user/deletUser/${id}`);
+    dispatch(GetUser());
+  } catch (error) {
+    console.log(error);
+  }
+};
+  export const logout = () => {
+    localStorage.removeItem("token")
+  return { type: LOGOUT };
+};

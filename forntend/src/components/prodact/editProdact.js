@@ -3,7 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { Editprodact, getoneprodact, getoneProdact } from "../redux/actions/prodactActions";
+import { editrPodact, getoneprodact } from "../redux/actions/prodactActions";
 import {useNavigate } from "react-router-dom";
 
 
@@ -69,7 +69,7 @@ const EditProdact = ({prodact}) => {
         <Button
           variant="primary"
           onClick={() => {
-            dispatch(Editprodact(id, { Name,prix,reference,image }));
+            dispatch(editrPodact(id, { Name,prix,reference,image }));
             navigate("/prodact");
           }}
           type="submit"
@@ -83,4 +83,4 @@ const EditProdact = ({prodact}) => {
   
 }
 
-export default EditProdact
+export default editrPodact

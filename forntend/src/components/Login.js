@@ -10,10 +10,10 @@ const Login = () => {
   const [passWord, setpassWord] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleAdd = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     dispatch(login({ email,passWord }, navigate));
-    
+    navigate('/UserProfile')
   }
   return (
     <div><div id="main-wrapper" className="container">
@@ -57,7 +57,7 @@ const Login = () => {
                          
                         />
                       </div>
-                      <button onClick={handleAdd} className="btn btn-theme">
+                      <button onClick={handleLogin} className="btn btn-theme">
                         Login
                       </button>
                       <a
@@ -90,7 +90,7 @@ const Login = () => {
           </div>
           {/* end card */}
           <p className="text-muted text-center mt-3 mb-0">
-            Don't have an account? <a className="text-primary ml-1">register</a>
+            Don't have an account? <a className="text-primary ml-1" href='/'>register</a>
           </p>
           {/* end row */}
         </div>

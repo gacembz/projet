@@ -1,4 +1,5 @@
-import { FAIL, LOGIN, REGISTER } from "../types/authTypes";
+
+import { FAIL, GETCURRENT, GETUSER, LOGIN, LOGOUT, REGISTER } from "../types/authTypes";
 
 
 const initialState = {
@@ -18,11 +19,23 @@ error:[],
  case LOGIN:
          localStorage.setItem("token",payload.token);
      return {...state,user:payload.foundUser,auth:true,load:false}   
+      case GETCURRENT :
+      return { ...state, user: payload.user,auth:true };
+
+    case GETUSER:
+      return { ...state, user: payload.users };
+    case FAIL:
+      return { ...state, errors: payload.errors, user: null };
      
-     default:
-        return state;
- }
+   case LOGOUT:
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      localStorage.removeItem("id");
+      return { ...state, user: null,auth:false };
+    default:
+      return state;
   }
+ };
   export default authReducer;
 
 

@@ -1,26 +1,47 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getprodact } from "../redux/actions/prodactActions";
+import { GetProdact } from "../redux/actions/prodactActions";
+import { Title, Subtitle, Body, Card, Button } from "react-bootstrap";
+import Prodactcard from "./ProdactCard"
+import { Link } from "react-router-dom";
+import deletProdact from "./deletProdact";
+function ProdactList({}) {
 
-import Prodactcard from "./prodactCard"
-
-
-
-
-
-const ProdactList = () => {
-const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getprodact());
-  }, []);
-  const prodact = useSelector((state) => state.prodactReducer.prodact);
+  const dispatch = useDispatch();
+  const {prodacts} = useSelector((store)=>store.prodactReducer)
  
+ 
+  useEffect(()=>{
+   dispatch(GetProdact())
+  },[])
+   return (
     
-  return (
-   <div> {prodact.map((prodact) => (
-        <Prodactcard prodact={prodact}></Prodactcard>
-      ))}</div>
-  )
+  
+    <div className="produit">
+    { prodacts.map(product=> <Card style={{ width: "18rem" }}>
+        <Card.Body>
+        
+          <Card.Title> prodactname: {product.prodactName} </Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">
+           prodactName :{product.Name}
+          </Card.Subtitle>
+          <Card.Subtitle className="mb-2 text-muted">
+            prix:{product.prix}
+          </Card.Subtitle>
+          <Card.Subtitle className="mb-2 text-muted">
+            reference:{product.reference}
+          </Card.Subtitle>
+          <Card.Subtitle className="mb-2 text-muted">
+            image:{product.image}
+          </Card.Subtitle>
+         
+          <Link to={`/edit/${product._id}`}>
+            {" "}
+            <Button variant="dark">DELETE</Button>
+          </Link>
+        </Card.Body>
+      </Card>)}
+    </div>
+  );
 }
-
-export default ProdactList
+export default ProdactList;

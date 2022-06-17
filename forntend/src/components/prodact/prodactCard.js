@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Title, Subtitle, Body, Card, Button } from "react-bootstrap";
-import { deleteprodact, Deletprodact, deletprodact } from "../redux/actions/prodactActions"
-import { useDispatch } from "react-redux";
+
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-function Prodactcard({ prodact }) {
-  const dispatch = useDispatch();
+import { GetProdact } from "../redux/actions/prodactActions";
+import deletProdact from "./deletProdact";
+import "./card.css";
+
+
+const ProdactCard = ({prodact}) => {
+  
+ 
+  
   return (
-    <div>
-      <Card style={{ width: "18rem" }}>
+    
+  
+    <div class="produit">
+      <Card>
         <Card.Body>
-          <Card.Title> prodactname: {prodact.prodactname} </Card.Title>
+        
+          <Card.Title> prodactname: {prodact.prodactName} </Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
            prodactName :{prodact.prodactName}
           </Card.Subtitle>
@@ -22,12 +32,7 @@ function Prodactcard({ prodact }) {
           <Card.Subtitle className="mb-2 text-muted">
             image:{prodact.image}
           </Card.Subtitle>
-          <Button
-            variant="danger"
-            onClick={() => dispatch(Deletprodact(prodact._id))}
-          >
-            Delete
-          </Button>
+         
           <Link to={`/edit/${prodact._id}`}>
             {" "}
             <Button variant="dark">Edit</Button>
@@ -38,4 +43,6 @@ function Prodactcard({ prodact }) {
   );
 }
 
-export default Prodactcard;
+
+export default ProdactCard
+
