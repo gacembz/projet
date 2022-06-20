@@ -35,10 +35,7 @@ function ProdactList({}) {
             image:{product.image}
           </Card.Subtitle>
          
-          <Link to={`/edit/${product._id}`}>
-            {" "}
-            <Button variant="dark">DELETE</Button>
-          </Link>
+         
         </Card.Body>
       </Card>)}
     </div>

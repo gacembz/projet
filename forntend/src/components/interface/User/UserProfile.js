@@ -13,7 +13,8 @@ const user=useSelector(state=>state.authReducers.user)
         <Card>
           <Card.Body>
             <Card.Title>{user && user.firstName}</Card.Title>
-            
+            <Card.Title>{user && user.email}</Card.Title>
+            <Card.Title>{<img src="https://www.jobmania.fr/wp-content/uploads/2019/09/1280xpreparationintro.jpg" alt="exemple de texte alternatif"/>}</Card.Title>
           </Card.Body>
         </Card>
       </CardGroup>

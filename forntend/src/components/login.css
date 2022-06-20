@@ -1,18 +1,18 @@
 body {
     margin-top: 20px;
     background: #f6f9fc;
-    background-image: url("./font.jpg");
+    background-image: url("./back.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
 }
 
 .account-block {
     padding: 0;
-    background-image: url(https://bootdey.com/img/Content/bg1.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
-    position: relative;
+    background-image:url(https: //blog.mercato-emploi.com/wp-content/uploads/2020/11/Projetprofessionnel.jpg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    height:100%;
+    position:relative;
 }
 
 .account-block .overlay {
@@ -46,4 +46,10 @@ body {
     background-color: #5369f8;
     border-color: #5369f8;
     color: #fff;
+}
+.parg{
+
+text-align: center;
+text-align: left;
+text-align: right;
 }
