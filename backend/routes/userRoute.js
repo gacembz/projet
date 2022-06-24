@@ -6,8 +6,8 @@ const Router=express.Router()
 
 Router.post("/register",RegisterValidation,validation,register);
 Router.post("/login",loginValidation,validation,login);
-Router.get("/users",getAllUser);
-Router.get("/allusers",GetUser);
+Router.get("/users",isAuth,getAllUser);
+// Router.get("/allusers",GetUser);
 Router.delete("/deleted/:id",deleteUser);
 Router.put("/put/:id",updateUser);
 //method get

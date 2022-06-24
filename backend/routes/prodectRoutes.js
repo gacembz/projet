@@ -1,9 +1,10 @@
 const express=require("express");
 const { register, deleteProdact, updateProdact, getProdacts } = require("../controllers/prodactControlle");
+const { isAuth } = require("../middleware/auth");
 
 const prodactRoutes = express.Router()
 
-prodactRoutes.post("/addProdact",register);
+prodactRoutes.post("/addProdact",isAuth,register);
 
 prodactRoutes.get("/allproducts",getProdacts);
 prodactRoutes.delete("/delete/:id",deleteProdact);

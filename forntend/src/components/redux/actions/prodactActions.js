@@ -11,8 +11,13 @@ export const GetProdact = () => async (dispatch) => {
   }
 };
 export const addProdact = (newprodact) => async (dispatch) => {
+    const config={
+    headers:{
+      token:localStorage.getItem('token')
+    }
+  }
   try {
-    const res = await axios.post("/api/prodact/post", newprodact);
+    const res = await axios.post("/prodact/addProdact", newprodact,config);
     dispatch(GetProdact());
   } catch (error) {
     console.log(error);
@@ -20,7 +25,7 @@ export const addProdact = (newprodact) => async (dispatch) => {
 };
 export const deleteProdact = (id) => async (dispatch) => {
   try {
-    const res = await axios.delete(`/api/prodact/delete/${id}`);
+    const res = await axios.delete(`/prodact/delete/${id}`);
     dispatch(GetProdact());
   } catch (error) {
     console.log(error);
@@ -28,7 +33,7 @@ export const deleteProdact = (id) => async (dispatch) => {
 };
 export const editrPodact = (id, editrPodact) => async (dispatch) => {
   try {
-    const res = await axios.put(`/api/prodact/put/${id}`, editrPodact);
+    const res = await axios.put(`/prodact/put/${id}`, editrPodact);
     dispatch(GetProdact());
   } catch (error) {
     console.log(error);

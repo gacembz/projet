@@ -1,7 +1,7 @@
 export const REGISTER="REGISTER"
 export const LOGIN="LOGIN"
 export const FAIL="FAIL"
-export const GETUSER="GETUSER"
+export const GETUSERS="GETUSERS"
 export const ADDUSER="ADDUSER"
 export const DELETUSER="DELETUSER"
 export const GETCURRENT ="GETCURRENT"

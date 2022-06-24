@@ -1,5 +1,5 @@
 
-import { FAIL, GETCURRENT, GETUSER, LOGIN, LOGOUT, REGISTER } from "../types/authTypes";
+import { FAIL, GETCURRENT, GETUSERS, LOGIN, LOGOUT, REGISTER } from "../types/authTypes";
 
 
 const initialState = {
@@ -7,6 +7,7 @@ const initialState = {
     auth:false,
     load:true,
 error:[],
+users:[]
 }
 
  const authReducer=(state = initialState, { type, payload }) => {
@@ -22,8 +23,8 @@ error:[],
       case GETCURRENT :
       return { ...state, user: payload.user,auth:true };
 
-    case GETUSER:
-      return { ...state, user: payload.users };
+    case GETUSERS:
+      return { ...state, users: payload.allusers };
     case FAIL:
       return { ...state, errors: payload.errors, user: null };
      

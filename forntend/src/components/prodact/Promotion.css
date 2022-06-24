@@ -1,0 +1,7 @@
+body {
+    margin-top: 20px;
+    background: #f6f9fc;
+    background-image: url("./back.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}

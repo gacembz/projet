@@ -7,7 +7,8 @@ import "./components/login.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from 'react-redux';
 import store from './components/redux/store';
-// import "./components/Home.css";
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(

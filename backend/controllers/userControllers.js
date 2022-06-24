@@ -64,14 +64,14 @@ exports.GetUser = async (req, res) => {
 exports.getAllUser = async(req,res)=>{
     try {
      const allusers = await users.find()  
-     res.status(200).send({msg:"ggg",allusers}) 
+     res.status(200).send({msg:"all users",allusers}) 
     } catch (error) {
-        res.status(500).send({msg:"fff"})
+        res.status(500).send("server error")
     }
 }
 exports.deleteUser = async (req, res) => {
     try {
-        const deleteuser = await users.findByIdAndDelete(req.params.id)
+         await users.findByIdAndDelete(req.params.id)
         res.status(200).send({ msg: "deleted user" })
     } catch (error) {
         res.status(500).send({ msg: "could not delete user" })

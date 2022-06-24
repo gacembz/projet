@@ -14,6 +14,6 @@ reference:{
 type:String,
 unique:true,
 },
-
+imageUrl:String
 });
 module.exports=mongoose.model("Prodact",prodactSchema);

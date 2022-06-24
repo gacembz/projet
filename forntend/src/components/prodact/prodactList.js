@@ -5,7 +5,8 @@ import { Title, Subtitle, Body, Card, Button } from "react-bootstrap";
 import Prodactcard from "./ProdactCard"
 import { Link } from "react-router-dom";
 import deletProdact from "./deletProdact";
-function ProdactList({}) {
+import  Promotion  from "./Promotion";
+function ProdactList() {
 
   const dispatch = useDispatch();
   const {prodacts} = useSelector((store)=>store.prodactReducer)
@@ -20,11 +21,9 @@ function ProdactList({}) {
     <div className="produit">
     { prodacts.map(product=> <Card style={{ width: "18rem" }}>
         <Card.Body>
-        
-          <Card.Title> prodactname: {product.prodactName} </Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">
-           prodactName :{product.Name}
-          </Card.Subtitle>
+         <Card.Img variant="top" src={product.imageUrl} alt="" />
+          <Card.Title> product name: {product.Name} </Card.Title>
+          
           <Card.Subtitle className="mb-2 text-muted">
             prix:{product.prix}
           </Card.Subtitle>
@@ -38,6 +37,20 @@ function ProdactList({}) {
          
         </Card.Body>
       </Card>)}
+       <div>
+        {/* 👇️ react router link */}
+        <Link to="/Promotion">
+          <button> Soldes</button>
+        </Link>
+
+        <br />
+        <br />
+
+        {/* 👇️ Anchor link */}
+        <a href="https://google.com" target="_blank" rel="noreferrer">
+          
+        </a>
+      </div>
     </div>
   );
 }

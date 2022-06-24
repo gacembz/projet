@@ -3,7 +3,7 @@ const Prodact=require("../models/prodacts");
 
 
 exports.register =async(req,res)=> {
-     const{Name,prix,reference}=req.body ;
+     
     
     try{  
         const newprodact= new Prodact(req.body);

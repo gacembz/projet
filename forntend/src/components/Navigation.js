@@ -8,6 +8,7 @@ import { logout } from "./redux/actions/authActions";
 
 const Navigation = () => {
   const auth=useSelector(state=>state.authReducers.auth)
+  const user=useSelector(state=>state.authReducers.user)
   const dispatch=useDispatch()
   const Navigate = useNavigate();
   return (
@@ -20,6 +21,14 @@ const Navigation = () => {
             <Nav.Link as={Link} to="/prodactList">
           product list
           </Nav.Link>
+          <Nav.Link as={Link} to="/UserProfile">
+            Profile
+          </Nav.Link>
+          {
+            auth && user.role==="admin" &&<Nav.Link as={Link} to="/admin">
+            admin
+          </Nav.Link>
+          }
           {
             auth ?  <Nav.Link onClick={()=>{dispatch(logout()); Navigate('/')}} >
             Logout
@@ -30,6 +39,7 @@ const Navigation = () => {
           <Nav.Link as={Link} to="/register">
             Register
           </Nav.Link>
+          
           </Fragment> 
           }
          
